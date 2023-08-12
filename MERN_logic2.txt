@@ -1,0 +1,124 @@
+import React, { useState } from 'react'
+import { Button, Container, Nav, Navbar, Table } from 'react-bootstrap'
+
+const Dashboard = () => {
+   const[raw,setRaw] =useState(0)
+   const[raw2,setRaw2]=useState(0)
+   const[product,setProduct]=useState(0)
+   const[product1,setProduct1]=useState(0)
+
+   const decrementRaw = () =>{
+    if(raw > 0){
+        setRaw(raw-1)    
+    }
+   }
+   const incrementRaw = () =>{
+    setRaw(raw+1)
+   }
+   const decrementRaw1 = () =>{
+    if(raw2 > 0){
+        setRaw2(raw2-1)
+    }
+   }
+   const incrementRaw1 = () =>{
+    setRaw2(raw2+1)
+   }
+   const decrementProduct = () =>{
+    if(product > 0){
+        setProduct(product-1)
+    }
+    else{
+        alert("value is less than 0")
+    }
+   }
+   const incrementProduct = () =>{
+    
+   
+        setProduct(product+1)
+
+    
+   }
+
+   const incrementProduct1 = () =>{
+    setProduct1(product1+1)
+   }
+   const decrementProduct1 = () =>{
+    if(product1 > 0){
+        setProduct1(product1-1)
+    }
+   }
+   var total = raw + raw2;
+   if(product > total || product1 >total){
+    alert("Stock is not available")
+   }
+  
+   
+
+  return (
+    <div>
+         <Navbar bg="primary" data-bs-theme="light" >
+        <Container>
+          <Navbar.Brand href="">AM WEBSTACK</Navbar.Brand>
+          
+        </Container>
+      </Navbar>
+      <br/>
+        <h4>Raw Material(RM)</h4>
+        <Table striped bordered hover variant="warning">
+            <thead>
+               <tr>
+                <th>Raw Material</th>
+                <th>Count</th>
+                <th></th>   
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>RM-1</td>
+                <td>{raw}</td>
+                <td><Button onClick={decrementRaw}>-</Button></td>
+                <td><Button onClick={incrementRaw}>+</Button></td>
+            </tr>
+            <tr>
+                <td>RM-2</td>
+                <td>{raw2}</td>
+                <td><Button onClick={decrementRaw1}>-</Button></td>
+                <td><Button onClick={incrementRaw1}>+</Button></td>
+            </tr>
+           
+            </tbody>
+            
+           
+        </Table>
+        <br/>
+        <h4>Finish Product(FP)</h4>
+        <Table striped bordered hover variant="warning">
+            <thead>
+            <tr>
+                <th>Product name</th>
+                <th>Count</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+           <tbody>
+            <tr>
+                <td>FP-1</td>
+                <td>{product}</td>
+                <td><Button onClick={decrementProduct}>-</Button></td>
+                <td><Button onClick={incrementProduct}>+</Button></td>
+            </tr>
+            <tr>
+            <td>FP-2</td>
+                <td>{product1}</td>
+                <td><Button onClick={decrementProduct1}>-</Button></td>
+                <td><Button onClick={incrementProduct1}>+</Button></td>
+            </tr>
+            </tbody>
+        </Table>
+    </div>
+  )
+}
+
+export default Dashboard
